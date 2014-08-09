@@ -8,14 +8,18 @@ if (process.env.NODE_ENV === 'development') {
   garbanzo = require('../lib-cov');
 }
 
-describe('garbanzo-db', function () {
+describe.skip('garbanzo-db', function () {
   before(util.setup);
   after(util.cleanup);
 
   before(function () {
-    this.db = garbanzo.server({
+    this.server = garbanzo.server({
       path: this.dbpath
     });
+  });
+
+  after(function () {
+    this.server.close();
   });
 
   it.skip('GET /', function (done) {
