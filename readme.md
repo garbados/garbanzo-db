@@ -59,7 +59,7 @@ db.get('a_collection', 'some_key', 'optional_version', function (err, doc) {
 ### Options
 
 * `db`: the storage backend garbanzo-db uses to store data. Defaults to [LevelDOWN][].
-* `cache`: an optional storage engine to use as a cache. Defaults to none, but if you want a cache, I recommend [MemDown][].
+* `cache`: an optional storage engine to use as a cache. Defaults to none, but if you want a cache, I recommend [MemDOWN][].
 * `cache_ttl`: an optional integer indicating how many seconds data in the cache will go unused before expiring.
 * `path`: path to the database folder, as in, where garbanzo-db should store data. Defaults to `./.garbanzo`.
 
