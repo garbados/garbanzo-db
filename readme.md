@@ -16,7 +16,7 @@ Feature-full DB inspired by [Orchestrate](http://orchestrate.io/), using [LevelD
 * [Geo queries](#dbgeo_querycollection-query-callback)
 * [Graph queries](#dbchangescollection-key-callback)
 * [Changes feeds](#dbchangescollection-key-callback)
-* [Master-to-master replication](#dbreplicate-other_db-options-callback)
+* [Master-to-master replication](#dbreplicateother_db-options-callback)
 * TODO scaling lol
 
 ## Install
@@ -85,7 +85,7 @@ All garbanzo-db methods return a [ReadStream](http://nodejs.org/api/stream.html#
 * [db.graph_query(collection, query, [callback])](#dbgraph_querycollection-query-callback)
 * [db.mr_query(collection, key, query, [callback])](#dbmr_querycollection-query-callback)
 * [db.changes([collection], [key], [callback])](#dbchangescollection-key-callback)
-* [db.replicate(other_db, [options], [callback])](#dbreplicate-other_db-options-callback)
+* [db.replicate(other_db, [options], [callback])](#dbreplicateother_db-options-callback)
 
 #### db.get(collection, key, version, [callback])
 
