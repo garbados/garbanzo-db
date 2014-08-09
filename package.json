@@ -1,7 +1,7 @@
 {
   "name": "garbanzo-db",
   "version": "0.0.0",
-  "description": "Feature-full DB inspired by Orchestrate.io",
+  "description": "Feature-full DB inspired by Orchestrate",
   "main": "index.js",
   "bin": {
     "garbanzo-db": "./bin/server.js"
