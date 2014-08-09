@@ -1,0 +1,41 @@
+{
+  "name": "garbanzo-db",
+  "version": "0.0.0",
+  "description": "Feature-full DB inspired by Orchestrate.io",
+  "main": "index.js",
+  "bin": {
+    "garbanzo-db": "./bin/server.js"
+  },
+  "scripts": {
+    "start": "./bin/server.js",
+    "test": "npm run jshint && npm run jscoverage && npm run mocha",
+    "debug": "npm run jshint && NODE_ENV=development npm run mocha",
+    "jshint": "./node_modules/.bin/jshint bin lib test index.js",
+    "jscoverage": "./node_modules/.bin/jscoverage lib lib-cov",
+    "mocha": "./node_modules/.bin/mocha -R spec",
+    "coveralls": "./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/.bin/coveralls",
+    "cov-html": "./node_modules/.bin/mocha -R cov-html > coverage.html"
+  },
+  "author": "Max Thayer <garbados@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "coveralls": "^2.11.1",
+    "jscoverage": "^0.5.5",
+    "jshint": "^2.5.3",
+    "mocha": "^1.21.4",
+    "mocha-lcov-reporter": "0.0.1"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "fulltext-engine": "^1.1.1",
+    "jsonquery-engine": "^1.0.1",
+    "jsonstream": "0.0.1",
+    "level-push": "^0.1.1",
+    "level-queryengine": "^3.0.1",
+    "level-set": "^0.1.1",
+    "level-sublevel": "^6.2.2",
+    "level-version": "^0.4.0",
+    "levelup": "^0.18.6",
+    "map-reduce": "^6.0.1"
+  }
+}
