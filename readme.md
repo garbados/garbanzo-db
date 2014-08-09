@@ -5,6 +5,19 @@ Feature-full DB inspired by [Orchestrate](http://orchestrate.io/), using [LevelD
 [![Build Status](https://travis-ci.org/garbados/garbanzo-db.svg)](https://travis-ci.org/garbados/garbanzo-db)
 [![Coverage Status](https://img.shields.io/coveralls/garbados/garbanzo-db.svg)](https://coveralls.io/r/garbados/garbanzo-db)
 
+## Features
+
+* Key/Value storage
+* Caching
+* Incremental MapReduce
+* Fulltext search
+* MQL queries
+* SQL queries
+* Geo queries
+* Graph queries
+* Changes feeds
+* TODO scaling lol
+
 ## Install
 
 To use garbanzo-db in projects, install like this:
@@ -19,31 +32,33 @@ To use garbanzo-db as a standalone database server, install like this:
 
 garbanzo-db is simple:
 
-    var garbanzo = require('garbanzo-db');
-    var db = garbanzo({
-        db: require('leveldown'),
-        cache: require('memdown'),
-        path: 'path/to/database'
-    });
+``` javascript
+var garbanzo = require('garbanzo-db');
+var db = garbanzo({
+    db: require('leveldown'),
+    cache: require('memdown'),
+    path: 'path/to/database'
+});
 
-    db.get('a_collection', 'some_key', 'optional_version', function (err, doc) {
-        console.log(doc);
-        // {
-        //  path: {
-        //    collection: 'a_collection',
-        //    key: 'some_key',
-        //    version: 'optional_version'
-        //  },
-        //  value: {
-        //    text: 'hello, stranger!'
-        //  }
-        // }
-    });
+db.get('a_collection', 'some_key', 'optional_version', function (err, doc) {
+    console.log(doc);
+    // {
+    //  path: {
+    //    collection: 'a_collection',
+    //    key: 'some_key',
+    //    version: 'optional_version'
+    //  },
+    //  value: {
+    //    text: 'hello, stranger!'
+    //  }
+    // }
+});
+```
 
 ### Options
 
-* `db`: the storage backend garbanzo-db uses to store data. Defaults to [LevelDOWN](https://github.com/rvagg/node-leveldown/).
-* `cache`: an optional storage engine to use as a cache. Defaults to none, but if you want a cache, I recommend [MemDown](https://github.com/rvagg/memdown).
+* `db`: the storage backend garbanzo-db uses to store data. Defaults to [LevelDOWN][].
+* `cache`: an optional storage engine to use as a cache. Defaults to none, but if you want a cache, I recommend [MemDown][].
 * `path`: path to the database folder, as in, where garbanzo-db should store data. Defaults to `./.garbanzo`.
 
 ### API Reference
@@ -85,8 +100,8 @@ To start the server, just run:
 
 This starts garbanzo-db with the following options:
 
-* `db`: [LevelDOWN]()
-* `cache`: [MemDOWN]()
+* `db`: [LevelDOWN][]
+* `cache`: [MemDOWN][]
 * `path`: './.garbanzo'
 * `port`: 3000
 
@@ -133,3 +148,6 @@ To run the test suite:
 ## License
 
 [ISC](http://opensource.org/licenses/ISC), yo.
+
+[LevelDOWN]: https://github.com/rvagg/node-leveldown/
+[MemDOWN]: https://github.com/rvagg/memdown
