@@ -60,12 +60,14 @@ db.get('a_collection', 'some_key', 'optional_version', function (err, doc) {
 
 * `db`: the storage backend garbanzo-db uses to store data. Defaults to [LevelDOWN][].
 * `cache`: an optional storage engine to use as a cache. Defaults to none, but if you want a cache, I recommend [MemDown][].
-* `cache_size`: an optional integer indicating how many objects to store in the cache. Defaults to 100, but only matters if caching is enabled.
+* `cache_ttl`: an optional integer indicating how many seconds data in the cache will go unused before expiring.
 * `path`: path to the database folder, as in, where garbanzo-db should store data. Defaults to `./.garbanzo`.
 
 ### Caching
 
-If you enable garbanzo-db's cache, the last N read responses will be stored in the cache, where N is the value of the `cache_size` option, or 100. During reads, if the cache is enabled, the cache is always tried first.
+If you enable garbanzo-db's cache, then any read requests to the database will try reading from the cache first. If the item isn't in the cache, garbanzo will try the primary datastore.
+
+Items in the cache will last for, by default, five minutes. Every time they're requested, that value is refreshed. When an item expires, it's removed from the cache automatically. To configure the expiration duration, set `cache_ttl` when you start garbanzo-db.
 
 ### API Reference
 
