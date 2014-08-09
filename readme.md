@@ -7,15 +7,15 @@ Feature-full DB inspired by [Orchestrate](http://orchestrate.io/), using [LevelD
 
 ## Features
 
-* Key/Value storage
-* Caching
-* Incremental MapReduce
-* Fulltext search
-* MQL queries
-* SQL queries
-* Geo queries
-* Graph queries
-* Changes feeds
+* Key/Value storage: read, create, update, and delete JSON data
+* [Caching](#caching)
+* [Incremental MapReduce](#dbmapreducecollection-key-map-reduce)
+* [Fulltext search](#dbfulltext_querycollection-query-callback)
+* [MQL queries](#dbmql_querycollection-query-callback)
+* [SQL queries](#dbsql_querycollection-query-callback)
+* [Geo queries](#dbgeo_querycollection-query-callback)
+* [Graph queries](#dbchangescollection-key-callback)
+* [Changes feeds](#dbchangescollection-key-callback)
 * TODO scaling lol
 
 ## Install
@@ -59,35 +59,55 @@ db.get('a_collection', 'some_key', 'optional_version', function (err, doc) {
 
 * `db`: the storage backend garbanzo-db uses to store data. Defaults to [LevelDOWN][].
 * `cache`: an optional storage engine to use as a cache. Defaults to none, but if you want a cache, I recommend [MemDown][].
+* `cache_size`: an optional integer indicating how many objects to store in the cache. Defaults to 100, but only matters if caching is enabled.
 * `path`: path to the database folder, as in, where garbanzo-db should store data. Defaults to `./.garbanzo`.
+
+### Caching
+
+If you enable garbanzo-db's cache, the last N read responses will be stored in the cache, where N is the value of the `cache_size` option, or 100. During reads, if the cache is enabled, the cache is always tried first.
 
 ### API Reference
 
 All garbanzo-db methods return a [ReadStream](http://nodejs.org/api/stream.html#stream_class_stream_readable), and accept as their last argument a callback function which fires when the document has been fully read.
 
-### db.get(collection, key, version, [callback])
+#### Table of Contents
 
-### db.create(collection, doc, [callback])
+* [db.get(collection, key, version, [callback])](#dbgetcollection-key-version-callback)
+* [db.create(collection, doc, [callback])](#dbcreatecollection-doc-callback)
+* [db.update(collection, key, doc, [version], [callback])](#dbupdatecollection-key-doc-version-callback)
+* [db.destroy(collection, key, [version], [callback])](#dbdestroycollection-key-version-callback)
+* [db.mapreduce(collection, key, map, reduce)](#dbmapreducecollection-key-map-reduce)
+* [db.mql_query(collection, query, [callback])](#dbmql_querycollection-query-callback)
+* [db.fulltext_query(collection, query, [callback])](#dbfulltext_querycollection-query-callback)
+* [db.sql_query(collection, query, [callback])](#dbsql_querycollection-query-callback)
+* [db.geo_query(collection, query, [callback])](#dbgeo_querycollection-query-callback)
+* [db.graph_query(collection, query, [callback])](#dbgraph_querycollection-query-callback)
+* [db.mr_query(collection, key, query, [callback])](#dbmr_querycollection-query-callback)
+* [db.changes([collection], [key], [callback])](#dbchangescollection-key-callback)
 
-### db.update(collection, key, doc, [version], [callback])
+#### db.get(collection, key, version, [callback])
 
-### db.destroy(collection, key, [version], [callback])
+#### db.create(collection, doc, [callback])
 
-### db.mapreduce(collection, key, map, reduce)
+#### db.update(collection, key, doc, [version], [callback])
 
-### db.mql_query(collection, query, [callback])
+#### db.destroy(collection, key, [version], [callback])
 
-### db.fulltext_query(collection, query, [callback])
+#### db.mapreduce(collection, key, map, reduce)
 
-### db.sql_query(collection, query, [callback])
+#### db.mql_query(collection, query, [callback])
 
-### db.geo_query(collection, query, [callback])
+#### db.fulltext_query(collection, query, [callback])
 
-### db.graph_query(collection, query, [callback])
+#### db.sql_query(collection, query, [callback])
 
-### db.mr_query(collection, query, [callback])
+#### db.geo_query(collection, query, [callback])
 
-### db.changes([collection], [key], [callback])
+#### db.graph_query(collection, query, [callback])
+
+#### db.mr_query(collection, key, query, [callback])
+
+#### db.changes([collection], [key], [callback])
 
 ## Usage as Server
 
