@@ -18,8 +18,28 @@ describe('garbanzo-db', function () {
     });
   });
 
-  it.skip('CRUD', function (done) {
-    
+  it.skip('get', function (done) {
+
+  });
+
+  it.skip('create', function (done) {
+
+  });
+
+  it.skip('update', function (done) {
+
+  });
+
+  it.skip('destroy', function (done) {
+
+  });
+
+  it.skip('batch', function (done) {
+
+  });
+
+  it.skip('stream', function (done) {
+
   });
 
   it.skip('parse nested objects', function (done) {

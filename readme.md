@@ -79,6 +79,8 @@ All garbanzo-db methods return a [ReadStream](http://nodejs.org/api/stream.html#
 * [db.create(collection, doc, [callback])](#dbcreatecollection-doc-callback)
 * [db.update(collection, key, doc, [version], [callback])](#dbupdatecollection-key-doc-version-callback)
 * [db.destroy(collection, key, [version], [callback])](#dbdestroycollection-key-version-callback)
+* [db.batch(docs, [callback])](#dbbatchdocs-callback)
+* [db.stream()](#dbstream)
 * [db.mapreduce(collection, key, map, reduce)](#dbmapreducecollection-key-map-reduce)
 * [db.mql_query(collection, query, [callback])](#dbmql_querycollection-query-callback)
 * [db.fulltext_query(collection, query, [callback])](#dbfulltext_querycollection-query-callback)
@@ -96,6 +98,10 @@ All garbanzo-db methods return a [ReadStream](http://nodejs.org/api/stream.html#
 #### db.update(collection, key, doc, [version], [callback])
 
 #### db.destroy(collection, key, [version], [callback])
+
+#### db.batch(docs, [callback])
+
+#### db.stream()
 
 #### db.mapreduce(collection, key, map, reduce)
 
