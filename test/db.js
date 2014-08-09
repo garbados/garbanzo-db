@@ -1,4 +1,3 @@
-var util = require('./util');
 var async = require('async');
 
 var garbanzo;
@@ -9,10 +8,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 describe('garbanzo-db', function () {
-  before(util.setup);
-  after(util.cleanup);
-
   before(function () {
+    this.dbpath = '.garbanzo';
     this.db = garbanzo.db({
       path: this.dbpath
     });
