@@ -149,6 +149,8 @@ You can set `path` and `port` as flags:
 
 ### `POST /[collection]/_mapreduce`
 
+### `POST /_replicate`
+
 ### `PUT /[collection]/[key]`
 
 ### `PUT /[collection]/[key]/[version]`
