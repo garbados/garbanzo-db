@@ -133,6 +133,25 @@ You can set `path` and `port` as flags:
 
     garbanzo-db --port 5000 --path path/to/put/data
 
+### Cheatsheet
+
+* [GET /](#get-)
+* [GET /[collection]](#get-collection)
+* [GET /[collection]/[key]](#get-collectionkey)
+* [GET /[collection]/[key]/[version]](#get-collectionkeyversion)
+* [GET /[collection]/_mapreduce](#get-collection_mapreduce)
+* [GET /[collection]/_mapreduce/[key]](#get-collection_mapreducekey)
+* [POST /[collection]](#post-collection)
+* [POST /[collection]/_mapreduce](#post-collection_mapreduce)
+* [POST /_replicate](#post-_replicate)
+* [PUT /[collection]/[key]](#put-collectionkey)
+* [PUT /[collection]/[key]/[version]](#put-collectionkeyversion)
+* [PUT /[collection]/_mapreduce/[key]](#put-collection_mapreducekey)
+* [DELETE /[collection]](#delete-collection)
+* [DELETE /[collection]/[key]](#delete-collectionkey)
+* [DELETE /[collection]/[key]/[version]](#delete-collectionkeyversion)
+* [DELETE /[collection]/_mapreduce/[key]](#delete-collection_mapreducekey)
+
 ### `GET /`
 
 ### `GET /[collection]`
