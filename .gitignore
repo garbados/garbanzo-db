@@ -1,6 +1,6 @@
 node_modules
 .env
-.DS_STORE
+.DS_Store
 coverage.html
 lib-cov
 npm-debug.log
