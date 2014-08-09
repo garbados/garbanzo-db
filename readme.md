@@ -34,7 +34,7 @@ To use garbanzo-db as a standalone database server, install like this:
 garbanzo-db is simple:
 
 ``` javascript
-var garbanzo = require('garbanzo-db');
+var garbanzo = require('garbanzo-db').db;
 var db = garbanzo({
     db: require('leveldown'),
     cache: require('memdown'),
