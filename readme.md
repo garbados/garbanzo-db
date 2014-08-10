@@ -2,6 +2,8 @@
 
 Feature-full DB inspired by [Orchestrate](http://orchestrate.io/), using [LevelDB](https://code.google.com/p/leveldb/).
 
+**THIS PROJECT IS UNDER HEAVY DEVELOPMENT AND, FRANKLY, DOESN'T WORK YET. THIS README ILLUSTRATES HOW IT EVENTUALLY WILL WORK.**
+
 [![Build Status](https://travis-ci.org/garbados/garbanzo-db.svg)](https://travis-ci.org/garbados/garbanzo-db)
 [![Coverage Status](https://img.shields.io/coveralls/garbados/garbanzo-db.svg)](https://coveralls.io/r/garbados/garbanzo-db)
 
