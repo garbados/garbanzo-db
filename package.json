@@ -9,8 +9,8 @@
   "scripts": {
     "start": "./bin/server.js",
     "test": "npm run jshint && npm run jscoverage && npm run mocha",
-    "posttest": "rm -r .garbanzo",
-    "debug": "npm run jshint && NODE_ENV=development npm run mocha",
+    "pretest": "rm -r .garbanzo || echo 0",
+    "debug": "npm run jshint && npm run pretest && NODE_ENV=development npm run mocha",
     "jshint": "./node_modules/.bin/jshint bin lib test index.js",
     "jscoverage": "./node_modules/.bin/jscoverage lib lib-cov",
     "mocha": "./node_modules/.bin/mocha -R spec",
