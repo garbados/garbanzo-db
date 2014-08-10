@@ -1,4 +1,6 @@
 var async = require('async');
+var assert = require('assert');
+var leveldown = require('leveldown');
 
 var garbanzo;
 if (process.env.NODE_ENV === 'development') {
@@ -13,10 +15,39 @@ describe('garbanzo-db', function () {
     this.db = garbanzo.db({
       path: this.dbpath
     });
+
+    this.collection = 'a';
+    this.key = 'b';
+    this.value = { herp: 'derp' };
   });
 
-  it.skip('get', function (done) {
+  afterEach(function (done) {
+    leveldown.destroy(this.dbpath, done);
+  });
 
+  it('get', function (done) {
+    // 1. get, not found
+    // 2. add an item
+    // 3. get, found
+    var self = this;
+    async.series([
+      function (done) {
+        self.db.get(self.collection, self.key, function (err) {
+          assert(err.notFound);
+          done();
+        });
+      },
+      function (done) {
+        var keypath = [self.collection, self.key].map(decodeURIComponent).join('/');
+        self.db._db.put(keypath, self.value, done);
+      },
+      function (done) {
+        self.db.get(self.collection, self.key, function (err, doc) {
+          assert.deepEqual(doc.value, self.value);
+          done();
+        });
+      }
+    ], done);
   });
 
   it.skip('create', function (done) {
