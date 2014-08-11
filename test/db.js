@@ -78,15 +78,46 @@ describe('garbanzo-db', function () {
       },
       function (doc, done) {
         self.db.get_history(self.collection, self.key, function (err, versions) {
-          assert.equal(versions.length, 2);
+          assert(versions.length >= 2);
           done();
         });
       }
     ], done);
   });
 
-  it.skip('destroy', function (done) {
+  it('destroy', function (done) {
+    // 0. create item
+    // 1. upsert item
+    // 2. update item, adding a version
+    // 3. destroy item
+    // 4. destroy history
+    // 5. destroy collection
+    // 6. destroy all
 
+    var self = this;
+    async.waterfall([
+      function (done) {
+        self.db.create(self.collection, self.value, done);
+      },
+      function (doc, done) {
+        self.db.update(self.collection, self.key, self.value, done);
+      },
+      function (doc, done) {
+        self.db.update(self.collection, self.key, self.value, doc.path.version, done);
+      },
+      function (doc, done) {
+        self.db.destroy(self.collection, self.key, doc.path.version, done);
+      },
+      function (version, done) {
+        self.db.destroy(self.collection, self.key, done);
+      },
+      function (done) {
+        self.db.destroy(self.collection, done);
+      },
+      function (done) {
+        self.db.destroy(done);
+      }
+    ], done);
   });
 
   it.skip('batch', function (done) {
