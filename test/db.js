@@ -30,7 +30,7 @@ describe('garbanzo-db', function () {
     // 2. add an item
     // 3. get, found
     var self = this;
-    async.series([
+    async.waterfall([
       function (done) {
         self.db.get(self.collection, self.key, function (err) {
           assert(err.notFound);
@@ -38,11 +38,10 @@ describe('garbanzo-db', function () {
         });
       },
       function (done) {
-        var keypath = [self.collection, self.key].map(decodeURIComponent).join('/');
-        self.db._db.put(keypath, self.value, done);
+        self.db.update(self.collection, self.key, self.value, done);
       },
-      function (done) {
-        self.db.get(self.collection, self.key, function (err, doc) {
+      function (doc, done) {
+        self.db.get(self.collection, self.key, doc.path.version, function (err, doc) {
           assert.deepEqual(doc.value, self.value);
           done();
         });
