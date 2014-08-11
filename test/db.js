@@ -64,8 +64,26 @@ describe('garbanzo-db', function () {
     ], done);
   });
 
-  it.skip('update', function (done) {
+  it('update', function (done) {
+    // 1. add an item by key
+    // 2. update that item
+    // 3. get all versions, assert there are two
 
+    var self = this;
+    async.waterfall([
+      function (done) {
+        self.db.update(self.collection, self.key, self.value, done);
+      },
+      function (doc, done) {
+        self.db.update(self.collection, self.key, self.value, doc.path.version, done);
+      },
+      function (doc, done) {
+        self.db.get_history(self.collection, self.key, function (err, versions) {
+          assert.equal(versions.length, 2);
+          done();
+        });
+      }
+    ], done);
   });
 
   it.skip('destroy', function (done) {
