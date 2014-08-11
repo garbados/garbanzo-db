@@ -120,6 +120,29 @@ describe('garbanzo-db', function () {
     ], done);
   });
 
+  it('all', function (done) {
+    // 1. add item
+    // 2. list items
+    // 3. assert items
+    var self = this;
+    async.waterfall([
+      function (done) {
+        self.db.create(self.collection, self.value, done);
+      },
+      function (doc, done) {
+        self.db.all(self.collection, done);
+      },
+      function (docs, done) {
+        try {
+          assert.equal(docs.length, 1);
+          done();
+        } catch (e) {
+          done(e);
+        }
+      }
+    ], done);
+  });
+
   it.skip('batch', function (done) {
 
   });
