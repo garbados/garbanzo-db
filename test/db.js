@@ -50,8 +50,18 @@ describe('garbanzo-db', function () {
     ], done);
   });
 
-  it.skip('create', function (done) {
-
+  it('create', function (done) {
+    // 1. add an item
+    // 2. get the item, to show it's there
+    var self = this;
+    async.waterfall([
+      function (done) {
+        self.db.create(self.collection, self.value, done);
+      },
+      function (doc, done) {
+        self.db.get(self.collection, doc.path.key, done);
+      }
+    ], done);
   });
 
   it.skip('update', function (done) {
